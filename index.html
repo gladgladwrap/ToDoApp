@@ -6,52 +6,80 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lacquer&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
 	
 	<title>Floughk</title>
 </head>
 
 <body>
+	<header>
+			<h1>Floughk Hashbrown's Daily Juggle</h1>
+	</header>
+
 <div class="container">
-	<h1>Floughk Hashbrown's Introduction to Javascript</h1>
 
-	<p>Welcome to my page. I never paid much attention to Javascript. I used to google solutions for UI effects and insert those into my projects, but I never really learned how to manipulate the DOM or make use of Javascript for more advanced solutions.</p>
+	<p>Welcome to my page. This page is a tool to help you give focus to your day.</p>
+	<p>Let's start by listing your goal, commitment, and gratitude for the day.</p>
 
-	<p>I'll start my endeavor by building a to-do list.</p>	
-
-	<div>
-		<button onclick="handlers.displayToDos()">Display To Do List</button>
-		<button onclick="handlers.toggleAll()">Toggle All</button>
+	<div id="goalsForm">
+		<div>
+			<label for="toDoInput">Today's Goal:</label>
+			<input id="goalInput" type="text">
+			<button onclick="handlers.addGoal()">Publish Goal</button>
+		</div>
+		<div>
+			<label for="toDoInput">Today's Commitment:</label>
+			<input id="commitmentInput" type="text">
+			<button onclick="handlers.addCommitment()">Publish Commitment</button>
+		</div>
+		<div>
+			<label for="toDoInput">Today's Gratitude:</label>
+			<input id="gratitudeInput" type="text">
+			<button onclick="handlers.addGratitude()">Publish Gratitude</button>
+		</div>
 	</div>
-		
-	<div>
-		<label for="toDoInput">Task:</label>
-		<input id="toDoInput" type="text">
-		<button onclick="handlers.addToDo()">Add Item</button>
-		
-		<label for="deletePositionInput">Delete Position:</label>
-		<input id="deletePositionInput" type="number">
-		<button onclick="handlers.deleteToDo()">Delete Item</button>
-		
+
+	<div id="toDoForm">
+		<div>
+			<button onclick="handlers.displayToDos()">Display To Do List</button>
+			<button onclick="handlers.toggleAll()">Toggle All</button>
+		</div>
+			
+		<div>
+			<label for="toDoInput">Task:</label>
+			<input id="toDoInput" type="text">
+			<button onclick="handlers.addToDo()">Add Item</button>
+		</div>
+		<div>	
+			<label for="deletePositionInput">Delete Position:</label>
+			<input id="deletePositionInput" type="number">
+			<button onclick="handlers.deleteToDo()">Delete Item</button>
+			
+		</div>
+		<div id="changeToDoForm">			
+			<label for="changeToDoPosition">Select Position:</label> 
+			<input id="changeToDoPosition" type="number">
+			<label for="changeToDoInput">Change Contents:</label> 
+			<input id="changeToDoInput" type="text">
+			<button onclick="handlers.changeToDo()">Change Contents</button>
+		</div>	
 	</div>
-	<div id="changeToDoForm>			
-		<label for="changeToDoPosition">Select Position:</label> 
-		<input id="changeToDoPosition" type="number">
-		<label for="changeToDoInput">Change Contents:</label> 
-		<input id="changeToDoInput" type="text">
-		<button onclick="handlers.changeToDo()">Change Contents</button>
-		
-	</div>	
 
-	<ul id="toDoList">
-	</ul>
+	<!-- <ul id="toDoList"></ul> -->
+	<table id="toDoTable">
+		<!-- <tr><th>Task</th><th>Status</th><th></th></tr> -->
+	</table>
 
-<div>	
-	<script src="app.js"></script>
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>	
+<script src="app.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

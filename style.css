@@ -1,0 +1,63 @@
+body {
+	background-color: #FFE9AB;
+}
+
+header {
+	background-color: #5469B3;
+	min-height: 6.2375rem;
+	padding: 1em 0;
+}
+
+/* Fonts */
+h1, h2, h3, th{
+	color: white;
+	font-family: 'Lacquer', sans-serif;
+}
+
+th {
+	color: black;
+	font-size: 1.5em;
+}
+
+p, td, button, input, label {	
+	font-family: 'Indie Flower', cursive;
+	font-size: 1.25em;
+}
+
+h1 {
+	margin-left: 1.5em;
+}
+.container {
+	background-color: #fff;
+	margin-top: 0;
+	padding: 2em 1em;
+}
+
+#goalsForm, #toDoForm {
+	border-bottom: 3px solid #ABBEFF;
+	margin: 2em 1em;
+}
+
+#goalsForm div, #toDoForm button {
+	margin-bottom: 0.75em;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 2px solid #B39E66;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: #FFEFC4;
+}
+
+tr:nth-child(even) {
+  background-color: #ABBEFF;
+}

@@ -87,29 +87,57 @@ var handlers = {
 var view = {
 	// function displayToDos will display all of our to do tasks from our array
 	displayToDos: function() {
-			
-		// create variable to reference our list
-		var toDoUl =  document.querySelector('ul');
+		
+		// Create variable to reference our table
+		// var toDoUl =  document.querySelector('ul');
+		var toDoTable = document.getElementById('toDoTable');
 
-		// clear the previous items from the list
-		toDoUl.innerHTML='';
+		// Clear the previous items from the list
+		toDoTable.innerHTML='';
 			
-		if (toDoList.toDos.length === 0) 
-			toDoUl.innerHTML='Your to-do list is empty.';
-		else {
-			// add each element of toDos to its own list item	
+		if (toDoList.toDos.length === 0) {
+					toDoTable.innerHTML='Your to-do list is empty.';
+		} else {
+			
+			// Create table rows
+			var tableRow = document.createElement('tr');
+
+			// Insert table rows into table
+			toDoTable.appendChild(tableRow);
+
+			// Create table headers
+			var th1 = document.createElement('th');
+			var th2 = document.createElement('th');
+			th1.innerHTML = "Task:";
+			th2.innerHTML = "Status:";
+
+			
+
+			// Append table headers to table row
+			tableRow.appendChild(th1);
+			tableRow.appendChild(th2);
+
+			// Add each element of the toDoList object to its own table data element and append that to its own row	
 			for (var i = 0; i < toDoList.toDos.length; i++) {
 					
-				// toDoLi will contain the toDo text
-				var toDoLi = document.createElement('li');
+				// Create toDo table data element to hold the toDo text
+				var toDoTd = document.createElement('td');
+				toDoTd.innerHTML = toDoList.toDos[i].toDoText;
+				// Create table data element to hold completed status
+				var completeTd = document.createElement('td');
+				if (toDoList.toDos[i].completed)
+					completeTd.innerHTML = 'Complete';
+				else
+					completeTd.innerHTML = 'Incomplete';
 
-				// completeLi will hold the completion status of the task
-				var completeLi = document.createElement('li');
+				// Create new variable to hold a new table row
+				var newRow = document.createElement('tr');
+				// Append a new row at the end of the table
+				toDoTable.appendChild(newRow);
 
-				toDoLi.innerHTML = toDoList.toDos[i].toDoText;
-				completeLi.innerHTML = toDoList.toDos[i].completed;
-				toDoUl.appendChild(toDoLi);
-				toDoUl.appendChild(completeLi);
+				// Insert the todo text and completion status into the table row
+				newRow.appendChild(toDoTd);
+				newRow.appendChild(completeTd);
 			}
 		}	
 	}
