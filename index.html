@@ -42,36 +42,20 @@
 		</div>
 	</div>
 
+	<h2>Things to be Completed Today</h2>
 	<div id="toDoForm">
 		<div>
-			<button onclick="handlers.displayToDos()">Display To Do List</button>
+			<input id="toDoInput" type="text">
+			<button onclick="handlers.addToDo()">Add Task</button>
+		
 			<button onclick="handlers.toggleAll()">Toggle All</button>
 		</div>
-			
-		<div>
-			<label for="toDoInput">Task:</label>
-			<input id="toDoInput" type="text">
-			<button onclick="handlers.addToDo()">Add Item</button>
-		</div>
-		<div>	
-			<label for="deletePositionInput">Delete Position:</label>
-			<input id="deletePositionInput" type="number">
-			<button onclick="handlers.deleteToDo()">Delete Item</button>
-			
-		</div>
-		<div id="changeToDoForm">			
-			<label for="changeToDoPosition">Select Position:</label> 
-			<input id="changeToDoPosition" type="number">
-			<label for="changeToDoInput">Change Contents:</label> 
-			<input id="changeToDoInput" type="text">
-			<button onclick="handlers.changeToDo()">Change Contents</button>
-		</div>	
+		
+		<input id="changeToDoInput" type="text">
+
 	</div>
 
-	<!-- <ul id="toDoList"></ul> -->
-	<table id="toDoTable">
-		<!-- <tr><th>Task</th><th>Status</th><th></th></tr> -->
-	</table>
+	<table id="toDoTable"></table>
 
 </div>	
 <script src="app.js"></script>
