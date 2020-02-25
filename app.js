@@ -38,12 +38,6 @@ var toDoList = {
 	},
 
 	toggleCompleted: function(position) {
-		
-		this.todos[position].completed = !this.todos[position].completed;
-		view.displayToDos();
-	},
-
-	toggleCompleted: function(position) {
 		this.toDos[position].completed = !this.toDos[position].completed;
 		view.displayToDos();
 	},
@@ -58,15 +52,13 @@ var toDoList = {
 				completedToDos++;
 		})
 
-		if (totalToDos === completedToDos) {
-					this.toDos.forEach(function(todo) {
-						todo.completed = false;
-					})
-		} else {
-			this.toDos.forEach(function(todo) {
+		this.toDos.forEach(function(todo) {
+			if (totalToDos === completedToDos)
+				todo.completed = false;
+			else
 				todo.completed = true;
-			}) 
-		}
+		})
+		 
 		view.displayToDos();
 	}
 };
@@ -127,16 +119,18 @@ var view = {
 			tableRow.appendChild(th3);
 
 			// Add each element of the toDoList object to its own table data element and append that to its own row	
-			for (var i = 0; i < toDoList.toDos.length; i++) {
-					
+
+			// Note: when forEach runs our callback function, it passes in an additional argument equivalent to i
+			toDoList.toDos.forEach(function(todo, position) {
+
 				// Component: toDo table data column 1 to hold the toDo text
 				var toDoTd = document.createElement('td');
-				toDoTd.innerHTML = toDoList.toDos[i].toDoText;
+				toDoTd.innerHTML = todo.toDoText;
 
 				// Component: table data column 3 to hold todo 'completed' status
 				var completeTd = document.createElement('td');
 				
-				if (toDoList.toDos[i].completed)
+				if (todo.completed)
 					completeTd.innerHTML = 'Complete';
 				else
 					completeTd.innerHTML = 'Incomplete';
@@ -145,7 +139,7 @@ var view = {
 				var buttonsTd = document.createElement('td'); 
 
 				// Set the id of the element
-				buttonsTd.id = i;
+				buttonsTd.id = position;
 
 				// Insert the delete, edit, and toggle buttons into 3rd td column
 				buttonsTd.appendChild(this.createDeleteButton());
@@ -161,7 +155,7 @@ var view = {
 				newRow.appendChild(toDoTd);
 				newRow.appendChild(completeTd);
 				newRow.appendChild(buttonsTd);
-			}
+			}, this)    // Add a second argument into our foreach, otherwise this will refer to our callback function
 		}	
 	},
 
