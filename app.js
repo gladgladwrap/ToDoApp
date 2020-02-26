@@ -1,7 +1,18 @@
-// This to do list was built following a tutorial by Watch and Code
+// This to do list was inspired by a tutorial from Watch and Code
 // Model Object: toDoList
 // View Object: view
 // Controller Object: handlers
+
+// For any future work: when multiple edit inputs are opened in order to 
+// change many tasks at the same time, it will not work. That is because every time changeToDos()
+// from the toDoList object is run, it also runs displayToDos(). At the time of running displayToDos, 
+// our toDos array of objects has already already had one of its object's toDoText property updated
+
+//Solution: reverse the changes in the other input when another edit input is opened
+// If a submit button class is present, then that could be updated or reversed
+
+// Other things to build: provide a warning next to the input if someone adds an empty task
+// Same goes for changing a task to an empty string
 
 var toDoList = {
 
@@ -63,6 +74,9 @@ var toDoList = {
 	}
 };
 
+
+
+
 var handlers = {
 	displayToDos: function() {
 		view.displayToDos();
@@ -78,12 +92,28 @@ var handlers = {
 	deleteToDo: function(deletePosition) {	
 		toDoList.deleteToDo(deletePosition);
 	},
-	changeToDo: function(editPosition) {
-		var changeText = document.getElementById('changeToDoInput');
-        toDoList.changeToDo(editPosition, changeText.value);
-		changeText.value = '';
+
+	// Once edit button is clicked, then run handlers.changeToDo
+	promptChangeToDo: function(editPosition) {
+		
+		// save the text that was inside of our toDos.toDoText
+		var savedText = toDoList.toDos[editPosition].toDoText;
+		
+		//Display an edit input inside the td with the todo text
+		view.displayEditInput(editPosition, savedText);
+	},
+	changeToDo: function(editPosition){
+		// In the case there is more than one edit input open, there
+		// will be 2 or more elements with the id of changeToDoInput.
+		// We can use the relation of the input in the td to the id of the submit button
+		var changeInputElement = document.getElementById(editPosition).previousSibling.previousSibling.firstChild;
+
+        toDoList.changeToDo(editPosition, changeInputElement.value);
 	}
 };
+
+
+
 
 var view = {
 	// function displayToDos will display all of our to do tasks from our array
@@ -156,9 +186,39 @@ var view = {
 				newRow.appendChild(completeTd);
 				newRow.appendChild(buttonsTd);
 			}, this)    // Add a second argument into our foreach, otherwise this will refer to our callback function
-		}	
+		}
 	},
 
+	displayEditInput: function(position, savedText) {
+
+		// Create an input for editing the contents of our todo text
+		var editInput = document.createElement('input');
+
+		// Add an id and type = 'text' to the input
+		editInput.id = 'changeToDoInput';
+		editInput.type = 'text';
+
+		// insert the original text inside of #changeToDoInput
+		editInput.value = savedText;
+
+		// Insert the input element into the first td in the row identified by position value
+		var firstTd = document.getElementById(position).previousSibling.previousSibling;
+
+		//clear the text data
+		firstTd.innerHTML = '';
+		firstTd.appendChild(editInput);
+		
+		// Change the Edit button to a Confirm Changes Button
+		// 1. get the editButton. Problem is that it's a class, but thankfully we can enter
+		// the td by its id and then grab the editButton inside.
+		var editButton = document.getElementById(position).getElementsByClassName('editButton').item(0);
+		
+		// Change the button's text to a Submit button
+		editButton.innerText = 'Submit';
+		// Change the edit button's class to a submit button
+		editButton.className = 'submitButton';
+	},	
+	
 	createDeleteButton: function() {
 
 		var deleteButton = document.createElement('button');
@@ -192,9 +252,11 @@ var view = {
 			if (elementClicked.className === 'deleteButton') {
 			    handlers.deleteToDo(event.target.parentNode.id);
 		    } else if (elementClicked.className === 'editButton') {
-		    	handlers.changeToDo(event.target.parentNode.id);
+		    	handlers.promptChangeToDo(event.target.parentNode.id);
 		    } else if (elementClicked.className === 'toggleCompleteButton') {
 		    	toDoList.toggleCompleted(event.target.parentNode.id);
+		    } else if (elementClicked.className === 'submitButton') {
+		    	handlers.changeToDo(event.target.parentNode.id);
 		    }
 
 		});
@@ -202,3 +264,9 @@ var view = {
 };
 
 view.setUpEventListeners();
+
+
+
+
+
+

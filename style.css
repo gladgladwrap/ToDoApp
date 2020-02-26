@@ -53,6 +53,16 @@ th {
 	margin: 2em;
 }
 
+input[type=text] {
+    padding:5px; 
+    border:2px solid #ABBEFF; 
+    border-radius: 3px;
+}
+
+input[type=text]:focus {
+    border-color:#5469B3;
+}
+
 button {
 	margin:0 1em 0.5em;
 }
@@ -74,4 +84,7 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
   background-color: #ABBEFF;
+}
+#changeToDoInput {
+	width: 90%;
 }
