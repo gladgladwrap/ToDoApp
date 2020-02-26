@@ -112,6 +112,23 @@ var handlers = {
 	}
 };
 
+var goalsHandler = {
+	addGoal: function() {
+		var goal = document.getElementById('goalInput').value;
+		var replaceContent = document.getElementById('goal');
+		replaceContent.innerHTML = '<h3>Goal: ' + goal +'</h3>';
+	},
+	addCommitment: function() {
+		var commitment = document.getElementById('commitmentInput').value;
+		var replaceContent = document.getElementById('commitment');
+		replaceContent.innerHTML = '<h3>Commitment: ' + commitment +'</h3>';
+	},
+	addGratitude: function() {
+		var gratitude = document.getElementById('gratitudeInput').value;
+		var replaceContent = document.getElementById('gratitude');
+		replaceContent.innerHTML = '<h3>Gratitude: ' + gratitude +'</h3>';
+	}
+};
 
 
 

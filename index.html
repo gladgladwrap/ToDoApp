@@ -21,24 +21,30 @@
 
 <div class="container">
 
-	<p>Welcome to my page. This page is a tool to help you focus on your day.</p>
-	<p>Let's start by listing your goal, commitment, and gratitude for the day.</p>
+	<img 
+    src="dawgeyes.svg" 
+    alt="dawg with cool eyes"
+    height="423"
+    width="500" />
+	
+	<p>Save your Post-it Notes. Use this tool to stay on track with your dailys tasks.</p>
+	<p>Let's start by listing your goal, commitment, and gratitude for the day. It's important.</p>
 
 	<div id="goalsForm">
-		<div>
+		<div id="goal">
 			<label for="toDoInput">Today's Goal:</label>
 			<input id="goalInput" type="text">
-			<button onclick="handlers.addGoal()">Publish Goal</button>
+			<button onclick="goalsHandler.addGoal()">Publish Goal</button>
 		</div>
-		<div>
+		<div id="commitment">
 			<label for="toDoInput">Today's Commitment:</label>
 			<input id="commitmentInput" type="text">
-			<button onclick="handlers.addCommitment()">Publish Commitment</button>
+			<button onclick="goalsHandler.addCommitment()">Publish Commitment</button>
 		</div>
-		<div>
+		<div id="gratitude">
 			<label for="toDoInput">Today's Gratitude:</label>
 			<input id="gratitudeInput" type="text">
-			<button onclick="handlers.addGratitude()">Publish Gratitude</button>
+			<button onclick="goalsHandler.addGratitude()">Publish Gratitude</button>
 		</div>
 	</div>
 
