@@ -156,6 +156,7 @@ var view = {
 			var th1 = document.createElement('th');
 			var th2 = document.createElement('th');
 			var th3 = document.createElement('th');
+
 			th1.innerHTML = "Task:";
 			th2.innerHTML = "Status:";
 			th3.innerHTML = "";
@@ -191,7 +192,7 @@ var view = {
 				// Insert the delete, edit, and toggle buttons into 3rd td column
 				buttonsTd.appendChild(this.createDeleteButton());
 				buttonsTd.appendChild(this.createEditButton());
-				buttonsTd.appendChild(this.createToggleCompleteButton());
+				buttonsTd.appendChild(this.createToggleCompleteButton(position));
 
 				// Create new variable to hold a new table row
 				var newRow = document.createElement('tr');
@@ -251,9 +252,12 @@ var view = {
 		return editButton;
 	},
 
-	createToggleCompleteButton: function() {
+	createToggleCompleteButton: function(position) {
 		var toggleCompleteButton = document.createElement('button');
-		toggleCompleteButton.textContent = 'Toggle Complete';
+		if (toDoList.toDos[position].completed === true)
+			toggleCompleteButton.textContent = 'Incomplete';
+		else
+			toggleCompleteButton.textContent = 'Complete';
 		toggleCompleteButton.className = 'toggleCompleteButton';
 		return toggleCompleteButton;
 	},
