@@ -19,46 +19,61 @@
 			<h1>Floughk Hashbrown's Daily Juggle</h1>
 	</header>
 
-<div class="container">
+	<div class="area" >
+            <ul class="cats">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
 
-	<img 
-    src="dawgeyes.svg" 
-    alt="dawg with cool eyes"
-    height="423"
-    width="500" />
-	
-	<p>Save your Post-it Notes. Use this tool to stay on track with your daily tasks.</p>
-	<p>Let's start by listing your goal, commitment, and gratitude for the day. It's important.</p>
+	<div class="container">
 
-	<div id="goalsForm">
-		<div id="goal">
-			<label for="toDoInput">Today's Goal:</label>
-			<input id="goalInput" type="text">
-			<button onclick="goalsHandler.addGoal()">Publish Goal</button>
+		<img 
+	    src="dawgeyes.svg" 
+	    alt="dawg with cool eyes"
+	    height="423"
+	    width="500" />
+		
+		<p>Save your Post-it Notes. Use this tool to stay on track with your daily tasks.</p>
+		<p>Let's start by listing your goal, commitment, and gratitude for the day. It's important.</p>
+
+		<div id="goalsForm">
+			<div id="goal">
+				<label for="toDoInput">Today's Goal:</label>
+				<input id="goalInput" type="text">
+				<button onclick="goalsHandler.addGoal()">Publish Goal</button>
+			</div>
+			<div id="commitment">
+				<label for="toDoInput">Today's Commitment:</label>
+				<input id="commitmentInput" type="text">
+				<button onclick="goalsHandler.addCommitment()">Publish Commitment</button>
+			</div>
+			<div id="gratitude">
+				<label for="toDoInput">Today's Gratitude:</label>
+				<input id="gratitudeInput" type="text">
+				<button onclick="goalsHandler.addGratitude()">Publish Gratitude</button>
+			</div>
 		</div>
-		<div id="commitment">
-			<label for="toDoInput">Today's Commitment:</label>
-			<input id="commitmentInput" type="text">
-			<button onclick="goalsHandler.addCommitment()">Publish Commitment</button>
+
+		<h2>Things to be Completed Today</h2>
+		<div id="toDoForm" class="row">
+			<input id="toDoInput" class="col-sm-4" type="text">
+			<button onclick="handlers.addToDo()">Add Task</button>
+		
+			<button onclick="handlers.toggleAll()">Toggle All</button>
 		</div>
-		<div id="gratitude">
-			<label for="toDoInput">Today's Gratitude:</label>
-			<input id="gratitudeInput" type="text">
-			<button onclick="goalsHandler.addGratitude()">Publish Gratitude</button>
-		</div>
-	</div>
 
-	<h2>Things to be Completed Today</h2>
-	<div id="toDoForm" class="row">
-		<input id="toDoInput" class="col-sm-4" type="text">
-		<button onclick="handlers.addToDo()">Add Task</button>
-	
-		<button onclick="handlers.toggleAll()">Toggle All</button>
-	</div>
+		<table id="toDoTable"></table>
 
-	<table id="toDoTable"></table>
-
-</div>	
+	</div>	
 <script src="app.js"></script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
