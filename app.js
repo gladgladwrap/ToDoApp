@@ -281,12 +281,21 @@ var view = {
 		    }
 
 		});
+	},
+	addToDoEventListener: function() {
+		var input = document.getElementById("toDoInput");
+		input.addEventListener("keyup", function(event) {
+		  // Number 13 is the "Enter" key on the keyboard
+		  if (event.keyCode === 13) {
+		    handlers.addToDo();
+		  }
+		});
 	}
 };
 
 view.setUpEventListeners();
 
-
+view.addToDoEventListener();
 
 
 

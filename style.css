@@ -127,6 +127,13 @@ tr:nth-child(even) {
 	width: 90%;
 }
 
+#maya {
+    position: fixed;
+    background: url(images/maya.svg) no-repeat;
+    height: calc(100vh - 6rem); 
+    width: 30vw;
+}
+
 /* Background animation */
 
 .area{  
